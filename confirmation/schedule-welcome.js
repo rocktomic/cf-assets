@@ -1,0 +1,25 @@
+var mediumCookie = getCookie("utm_medium");
+var mediumStorage = localStorage.getItem("utm_medium");
+  
+if((mediumCookie + mediumStorage).indexOf("consult") > -1){
+  $("[data-title='rock-ty-schedule-welcome']").hide();
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
